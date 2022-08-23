@@ -13,16 +13,14 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('items');
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->text('description');
             $table->integer('price');
             $table->text('image_name');
-            $table->dropForeign('categories_category_id_foreign');
-$table->foreign('category_id')
-->references('id')->on('categories')
-->onDelete('cascade');
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->string('featured');
             $table->string('active');
             $table->timestamps();
@@ -39,5 +37,6 @@ $table->foreign('category_id')
     public function down()
     {
         Schema::dropIfExists('items');
+
     }
 }
