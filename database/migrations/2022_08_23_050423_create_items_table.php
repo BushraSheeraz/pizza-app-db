@@ -14,19 +14,19 @@ class CreateItemsTable extends Migration
     public function up()
     {
         Schema::create('items', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->text('description');
-            $table->integer('price');
-            $table->text('image_name');
-            $table->unsignedInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->string('featured');
-            $table->string('active');
-            $table->timestamps();
+        $table->increments('id');
+        $table->string('name');
+        $table->text('description');
+        $table->integer('price');
+        $table->text('image_name');
+        $table->unsignedInteger('category_id');
+        $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+        $table->string('featured');
+        $table->string('active');
+        $table->timestamps();
 
-            
-        });
+        
+    });
     }
 
     /**
