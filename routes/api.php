@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\ItemsController;
+use App\Http\Controllers\API\PriceController;
+
 
 
 /*
@@ -30,6 +32,11 @@ Route::post('storeItem', [ItemsController::class, 'storeItem']);
 Route::put('/item/edit/{id}', [ItemsController::class, 'update']);
 Route::put('/category/edit/{id}', [CategoryController::class, 'updateCategory']);
 Route::get('/category/delete/{id}', [CategoryController::class, 'destroy']);
+
+// Price routes
+Route::post('storePrice', [PriceController::class, 'addPrice']);
+Route::put('/price/edit/{id}', [PriceController::class, 'updatePrice']);
+Route::get('/price/delete/{id}', [PriceController::class, 'destroyPrice']);
 
 });
 
