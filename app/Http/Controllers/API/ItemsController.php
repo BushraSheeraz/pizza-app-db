@@ -26,14 +26,17 @@ class ItemsController extends Controller
 
     // Edit Item
     public function update(Request $request, $id){
-        $item = Item::find($id);
-        $item->name = $request->name;
-        $item->description = $request->description;
-        $item->price = $request->price;
-        $item->image_name = $request->image_name;
-        $item->featured = $request->featured;
-        $item->active = $request->active;
-        $item->save();
+       Item::where('id',$id)->update($request->all());
+       $item=Item::where('id',$id)->first();
+       // $item = Item::find($id);
+
+        // $item->name = $request->name;
+        // $item->description = $request->description;
+        // $item->price = $request->price;
+        // $item->image_name = $request->image_name;
+        // $item->featured = $request->featured;
+        // $item->active = $request->active;
+        // $item->save();
 
         return response()->json(['message'=> 'success', 'data'=> $item], 200);
     }
